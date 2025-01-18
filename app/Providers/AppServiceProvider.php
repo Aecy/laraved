@@ -29,9 +29,7 @@ class AppServiceProvider extends ServiceProvider
         $this->configureCommands();
         $this->configureDates();
         $this->configureModels();
-        $this->configurePasswordValidation();
         $this->configureUrls();
-        $this->configureVite();
     }
 
     /**
@@ -78,7 +76,9 @@ class AppServiceProvider extends ServiceProvider
      */
     private function configureUrls(): void
     {
-        URL::forceScheme('https');
+        URL::forceScheme(
+            $this->app->isProduction() ? 'https' : 'http'
+        );
     }
 
     /**
