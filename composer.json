@@ -69,6 +69,7 @@
         "test": [
             "@test:lint",
             "@test:refactor",
+            "@test:arch",
             "@test:unit"
         ]
     },
