@@ -16,7 +16,11 @@ class CompetenceResource extends Resource
 {
     protected static ?string $model = Competence::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+
+    protected static ?string $modelLabel = 'Compétence';
+
+    protected static ?string $pluralModelLabel = 'Compétences';
 
     public static function form(Form $form): Form
     {
@@ -32,7 +36,8 @@ class CompetenceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->height(20),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('url'),
             ])
