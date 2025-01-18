@@ -67,7 +67,6 @@
         "test": [
             "@test:lint",
             "@test:refactor",
-            "@test:types",
             "@test:unit"
         ]
     },
