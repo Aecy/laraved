@@ -4,7 +4,11 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $competences = \App\Models\Competence::all();
+
+    return view('welcome', [
+        'competences' => $competences
+    ]);
 });
 
 Route::get('/dashboard', function () {
