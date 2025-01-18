@@ -8,7 +8,7 @@ use App\Filament\Resources\CompetenceResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditCompetence extends EditRecord
+final class EditCompetence extends EditRecord
 {
     protected static string $resource = CompetenceResource::class;
 

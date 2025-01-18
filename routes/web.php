@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $competences = \App\Models\Competence::all();
+    $competences = App\Models\Competence::all();
 
     return view('welcome', [
         'competences' => $competences,

@@ -12,7 +12,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class CompetenceResource extends Resource
+final class CompetenceResource extends Resource
 {
     protected static ?string $model = Competence::class;
 

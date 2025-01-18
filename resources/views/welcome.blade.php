@@ -34,11 +34,13 @@
                     width="20"
                     height="20"
                     decoding="async"
-                    data-nimg="1"
+                    data-nimg="{{ $loop->index + 1 }}"
                     style="color:transparent"
                     src="{{ $competence->image }}"
                 >
-                <span class="capitalize text-muted-foreground group-hover:text-black dark:text-neutral-400 group-hover:dark:text-white">{{ $competence->name }}</span>
+                <span class="capitalize text-muted-foreground group-hover:text-black dark:text-neutral-400 group-hover:dark:text-white">
+                    {{ $competence->name }}
+                </span>
             </a>
             @endforeach
         </ul>

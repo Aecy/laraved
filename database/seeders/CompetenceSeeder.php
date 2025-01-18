@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class CompetenceSeeder extends Seeder
+final class CompetenceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
