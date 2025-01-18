@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -60,18 +58,6 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Configure the application's password validation.
-     */
-    private function configurePasswordValidation(): void
-    {
-        Password::defaults(
-            fn () => $this->app->isProduction()
-                ? Password::min(8)->uncompromised()
-                : null
-        );
-    }
-
-    /**
      * Configure the application's URLs.
      */
     private function configureUrls(): void
@@ -79,13 +65,5 @@ class AppServiceProvider extends ServiceProvider
         URL::forceScheme(
             $this->app->isProduction() ? 'https' : 'http'
         );
-    }
-
-    /**
-     * Configure the application's Vite.
-     */
-    private function configureVite(): void
-    {
-        Vite::useAggressivePrefetching();
     }
 }

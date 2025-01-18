@@ -7,7 +7,7 @@ Route::get('/', function () {
     $competences = \App\Models\Competence::all();
 
     return view('welcome', [
-        'competences' => $competences
+        'competences' => $competences,
     ]);
 });
 

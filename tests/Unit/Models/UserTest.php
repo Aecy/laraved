@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Models\User;
-use Carbon\Carbon;
 
 test('to array', function () {
     $user = User::factory()->create()->fresh();
@@ -14,7 +13,7 @@ test('to array', function () {
         'email',
         'email_verified_at',
         'created_at',
-        'updated_at'
+        'updated_at',
     ]);
 });
 
