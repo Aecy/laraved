@@ -13,6 +13,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/md', function () {
+    $markdown = \Illuminate\Support\Facades\File::get(resource_path('/markdown/test.md'));
+
+    return view('md', [
+        'markdown' => $markdown
+    ]);
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
