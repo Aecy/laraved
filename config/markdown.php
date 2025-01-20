@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'code_highlighting' => [
         /*
@@ -14,7 +16,7 @@ return [
          *
          * More info: https://github.com/shikijs/shiki/blob/main/docs/themes.md
          */
-        'theme' => 'github-light',
+        'theme' => 'catppuccin-mocha',
     ],
 
     /*
@@ -25,7 +27,7 @@ return [
     /**
      * When enabled, anchors will be rendered as links.
      */
-    'render_anchors_as_links' => false,
+    'render_anchors_as_links' => true,
 
     /*
      * These options will be passed to the league/commonmark package which is
@@ -44,7 +46,6 @@ return [
      * caching set this value to `false`.
      */
     'cache_store' => null,
-
 
     /*
      * When cache_store is enabled, this value will be used to determine

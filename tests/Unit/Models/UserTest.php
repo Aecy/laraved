@@ -28,3 +28,9 @@ test('is unverified', function () {
 
     expect($user->email_verified_at)->toBeNull();
 });
+
+test('access to filament admin panel', function () {
+    $user = User::factory()->create();
+
+    expect($user->canAccessPanel(new Filament\Panel()))->toBeTrue();
+});

@@ -15,13 +15,9 @@
         <h1 class="mt-2 text-4xl font-bold tracking-tight sm:text-6xl">
             Exploiter le potentiel de l'AppServiceProvider de Laravel 11
         </h1>
-
     </div>
 
     <article class="prose lg:prose-xl">
-        <p class="mt-1 text-xl">
-            Je t'explique ce que je mets en place sur chaque nouveau projet avec Laravel pour éviter les bugs silencieux et bien d'autres...
-        </p>
         <x-markdown>{!! $markdown !!}</x-markdown>
     </article>
 </x-app-layout>

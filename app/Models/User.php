@@ -27,6 +27,9 @@ final class User extends Authenticatable implements FilamentUser
         'remember_token',
     ];
 
+    /**
+     * The access panel for the user.
+     */
     public function canAccessPanel(Panel $panel): bool
     {
         return true;

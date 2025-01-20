@@ -13,7 +13,7 @@
                     <x-nav-link :href="url('projects')" :active="false">
                         {{ __('projets') }}
                     </x-nav-link>
-                    <x-nav-link :href="url('posts')" :active="false">
+                    <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('articles') }}
                     </x-nav-link>
                     <x-nav-link :href="url('uses')" :active="false">
@@ -47,7 +47,7 @@
             <x-responsive-nav-link :href="url('projects')" :active="false">
                 {{ __('projets') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="url('posts')" :active="false">
+            <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.*')">
                 {{ __('articles') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="url('uses')" :active="false">

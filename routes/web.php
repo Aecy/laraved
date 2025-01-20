@@ -2,33 +2,15 @@
 
 declare(strict_types=1);
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $competences = App\Models\Competence::all();
+Route::get('/', HomeController::class);
 
-    return view('welcome', [
-        'competences' => $competences,
-    ]);
-});
-
-Route::get('/md', function () {
-    $markdown = \Illuminate\Support\Facades\File::get(resource_path('/markdown/test.md'));
-
-    return view('md', [
-        'markdown' => $markdown
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-require __DIR__.'/auth.php';
+Route::prefix('posts')
+    ->as('posts.')
+    ->group(static function (): void {
+        Route::get('/', [PostsController::class, 'index'])->name('index');
+        Route::get('/{post:slug}', [PostsController::class, 'show'])->name('show');
+    });

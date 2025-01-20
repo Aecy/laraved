@@ -13,7 +13,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Atkinson Hyperlegible', ...defaultTheme.fontFamily.sans],
+                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                code: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
             },
             colors: {
                 background: 'hsl(var(--background))',

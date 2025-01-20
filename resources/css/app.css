@@ -87,8 +87,12 @@
     }
 }
 
-.shiki .highlight {
-    @apply bg-gray-600 py-1;
+.prose code:after, .prose code:before {
+    content: '';
+}
+
+.shiki {
+    @apply font-code;
 }
 
 .shiki .add {
