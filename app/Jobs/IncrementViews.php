@@ -39,7 +39,7 @@ final class IncrementViews implements ShouldQueue
      */
     public static function dispatchUsingSession(Collection|Post $viewables): ?PendingDispatch
     {
-        if (app(Firewall::class)->isBot()) {
+        if (app(Firewall::class)->isBot(request())) {
             return null;
         }
 
@@ -69,8 +69,8 @@ final class IncrementViews implements ShouldQueue
             $lock->block(5);
 
             $recentlyViewed = $this->getRecentlyViewed($key);
-        } catch (LockTimeoutException) {
-            $this->release(10);
+        } catch (LockTimeoutException) { // @codeCoverageIgnore
+            $this->release(10); // @codeCoverageIgnore
         } finally {
             $lock->release();
         }

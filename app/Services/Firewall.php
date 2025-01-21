@@ -11,9 +11,14 @@ final readonly class Firewall
     /**
      * Determine if the request is from a bot.
      */
-    public function isBot(): bool
+    public function isBot(Request $request): bool
     {
-        // TODO: Implement the logic here
-        return false;
+        $bots = ['Google-PageRenderer', 'Googlebot', 'bot', 'crawler', 'spider', 'Yandex', 'BingPreview'];
+        $userAgent = $request->userAgent();
+
+        return str()->contains(
+            str($userAgent)->lower(),
+            array_map('strtolower', $bots)
+        );
     }
 }
