@@ -9,6 +9,9 @@ use Illuminate\View\View;
 
 final class HomeController extends Controller
 {
+    /**
+     * Handle the incoming request.
+     */
     public function __invoke(): View
     {
         $competences = Competence::all();

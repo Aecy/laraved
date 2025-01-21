@@ -10,8 +10,14 @@ use Filament\Resources\Pages\ListRecords;
 
 final class ListPosts extends ListRecords
 {
+    /**
+     * The resource that this page belongs to.
+     */
     protected static string $resource = PostResource::class;
 
+    /**
+     * Get the actions available on the page.
+     */
     protected function getHeaderActions(): array
     {
         return [

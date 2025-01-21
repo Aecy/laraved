@@ -9,5 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 
 final class CreatePost extends CreateRecord
 {
+    /**
+     * The resource that this page belongs to.
+     */
     protected static string $resource = PostResource::class;
 }

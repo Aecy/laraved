@@ -10,8 +10,14 @@ use Filament\Resources\Pages\EditRecord;
 
 final class EditPost extends EditRecord
 {
+    /**
+     * The resource that this page belongs to.
+     */
     protected static string $resource = PostResource::class;
 
+    /**
+     * Get the actions available on the page.
+     */
     protected function getHeaderActions(): array
     {
         return [

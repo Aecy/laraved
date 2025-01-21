@@ -24,6 +24,9 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 final class AdminPanelProvider extends PanelProvider
 {
+    /**
+     * Configure the Filament admin panel.
+     */
     public function panel(Panel $panel): Panel
     {
         return $panel

@@ -14,14 +14,29 @@ use Filament\Tables\Table;
 
 final class CompetenceResource extends Resource
 {
+    /**
+     * The model the resource corresponds to.
+     */
     protected static ?string $model = Competence::class;
 
+    /**
+     * The label of the resource.
+     */
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
+    /**
+     * The label of the resource.
+     */
     protected static ?string $modelLabel = 'Compétence';
 
+    /**
+     * The plural label of the resource.
+     */
     protected static ?string $pluralModelLabel = 'Compétences';
 
+    /**
+     * Configures the form for the resource.
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -32,6 +47,9 @@ final class CompetenceResource extends Resource
             ]);
     }
 
+    /**
+     * Configures the table for the resource.
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -55,13 +73,9 @@ final class CompetenceResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
+    /**
+     * Configures the pages for the resource.
+     */
     public static function getPages(): array
     {
         return [

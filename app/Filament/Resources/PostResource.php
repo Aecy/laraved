@@ -16,14 +16,29 @@ use Illuminate\Support\Str;
 
 final class PostResource extends Resource
 {
+    /**
+     * The model the resource corresponds to.
+     */
     protected static ?string $model = Post::class;
 
+    /**
+     * The label of the resource.
+     */
     protected static ?string $modelLabel = 'Article';
 
+    /**
+     * The plural label of the resource.
+     */
     protected static ?string $pluralModelLabel = 'Articles';
 
+    /**
+     * The columns that should be searched.
+     */
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
+    /**
+     * Configures the form for the resource.
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -61,6 +76,9 @@ final class PostResource extends Resource
             ]);
     }
 
+    /**
+     * Configures the table for the resource.
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -96,13 +114,9 @@ final class PostResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
+    /**
+     * Configures the pages for the resource.
+     */
     public static function getPages(): array
     {
         return [
