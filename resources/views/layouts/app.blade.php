@@ -24,6 +24,9 @@
             {{ $slot }}
         </main>
 
-        @include('layouts.footer')
+        @persist('footer')
+            <x-back-to-top :offset="300"/>
+            <x-footer/>
+        @endpersist
     </body>
 </html>
