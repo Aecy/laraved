@@ -18,10 +18,12 @@ use Illuminate\Support\Facades\Cache;
 
 final class IncrementViews implements ShouldQueue
 {
-    use Queueable, Dispatchable, SerializesModels;
+    use Dispatchable, Queueable, SerializesModels;
 
     /**
      * Create a new job instance.
+     *
+     * @param  Collection<array-key, Post>  $viewables
      */
     public function __construct(
         private Collection $viewables,
@@ -32,16 +34,18 @@ final class IncrementViews implements ShouldQueue
 
     /**
      * Dispatch the job using the session.
+     *
+     * @param  Collection<array-key, Post>|Post  $viewables
      */
-    public static function dispatchUsingSession(Collection|Model $viewables): ?PendingDispatch
+    public static function dispatchUsingSession(Collection|Post $viewables): ?PendingDispatch
     {
-        if (app(Firewall::class)->isBot(request())) {
+        if (app(Firewall::class)->isBot()) {
             return null;
         }
 
         $id = auth()->id() ?? session()->getId();
 
-        /** @var Collection|Model $viewables */
+        /** @var Collection<array-key, Post> $viewables */
         $viewables = $viewables instanceof Model ? collect([$viewables]) : $viewables;
 
         return self::dispatch($viewables, $id);
@@ -65,15 +69,17 @@ final class IncrementViews implements ShouldQueue
             $lock->block(5);
 
             $recentlyViewed = $this->getRecentlyViewed($key);
-        } catch (LockTimeoutException $exception) {
+        } catch (LockTimeoutException) {
             $this->release(10);
         } finally {
             $lock->release();
         }
 
         if ($recentlyViewed->isNotEmpty()) {
-            /** @var Post|Model $model */
+            /** @var Post $model */
             $model = $recentlyViewed->first();
+
+            /** @var array<int, int> $ids */
             $ids = $recentlyViewed->pluck('id')->toArray();
 
             $model::incrementViews($ids);
@@ -96,6 +102,8 @@ final class IncrementViews implements ShouldQueue
 
     /**
      * Get the recently viewed items.
+     *
+     * @return Collection<array-key, Post> $key
      */
     private function getRecentlyViewed(string $key): Collection
     {

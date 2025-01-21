@@ -11,10 +11,9 @@ final readonly class Firewall
     /**
      * Determine if the request is from a bot.
      */
-    public function isBot(Request $request): bool
+    public function isBot(): bool
     {
         // TODO: Implement the logic here
-
         return false;
     }
 }

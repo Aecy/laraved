@@ -4,23 +4,16 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Contracts\Models\Viewable;
 use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-final class Post extends Model
+final class Post extends Model implements Viewable
 {
     /** @use HasFactory<PostFactory> */
     use HasFactory;
-
-    /**
-     * @param  Builder<$this>  $query
-     */
-    public function scopePublished(Builder $query): void
-    {
-        $query->where('published_at', '<=', now());
-    }
 
     /**
      * Increment the views for the given post IDs.
@@ -32,6 +25,14 @@ final class Post extends Model
                 ->whereIn('id', $ids)
                 ->increment('views');
         });
+    }
+
+    /**
+     * @param  Builder<$this>  $query
+     */
+    public function scopePublished(Builder $query): void
+    {
+        $query->where('published_at', '<=', now());
     }
 
     /**

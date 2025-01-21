@@ -10,7 +10,7 @@ arch('strict types')
 
 arch('preset Laravel')->preset()->laravel()
     ->ignoring([
-        'App\Providers\Filament\AdminPanelProvider'
+        'App\Providers\Filament\AdminPanelProvider',
     ]);
 
 arch('security')
