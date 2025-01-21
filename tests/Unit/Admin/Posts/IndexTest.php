@@ -11,7 +11,7 @@ use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 
 it('can render page', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
 
     actingAs($user)
         ->get(PostResource::getUrl())

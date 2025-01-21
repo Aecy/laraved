@@ -30,7 +30,7 @@ test('is unverified', function () {
 });
 
 test('access to filament admin panel', function () {
-    $user = User::factory()->create();
+    $user = User::factory()->admin()->create();
 
     expect($user->canAccessPanel(new Filament\Panel()))->toBeTrue();
 });

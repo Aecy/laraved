@@ -44,4 +44,14 @@ final class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+
+    /**
+     * Indicate that the model's should be an administrator.
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes): array => [
+            'email' => 'mavrick.thiry@icloud.com',
+        ]);
+    }
 }

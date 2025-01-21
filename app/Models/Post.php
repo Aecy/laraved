@@ -23,6 +23,18 @@ final class Post extends Model
     }
 
     /**
+     * Increment the views for the given post IDs.
+     */
+    public static function incrementViews(array $ids): void
+    {
+        self::withoutTimestamps(function () use ($ids): void {
+            self::query()
+                ->whereIn('id', $ids)
+                ->increment('views');
+        });
+    }
+
+    /**
      * @return array<string,mixed>
      */
     protected function casts(): array

@@ -28,11 +28,11 @@ final class User extends Authenticatable implements FilamentUser
     ];
 
     /**
-     * The access panel for the user.
+     * Determine if the user can access the admin given panel.
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return $this->email === 'mavrick.thiry@icloud.com' && $this->hasVerifiedEmail();
     }
 
     /**
