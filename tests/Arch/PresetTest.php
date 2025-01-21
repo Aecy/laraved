@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-arch('preset PHP')->preset()->php();
+arch()->preset()->php();
 
 arch('strict types')
     ->expect('App')
@@ -10,11 +10,10 @@ arch('strict types')
 
 arch('preset Laravel')->preset()->laravel()
     ->ignoring([
-        'App\Providers\Filament\AdminPanelProvider',
-        'App\Filament\Resources\CompetenceResource\Pages\CreateCompetence',
+        'App\Providers\Filament\AdminPanelProvider'
     ]);
 
-arch('preset Security')
+arch('security')
     ->preset()
     ->security()
     ->ignoring('assert');
